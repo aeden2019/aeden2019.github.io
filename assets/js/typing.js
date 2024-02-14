@@ -21,16 +21,23 @@
 // }
 
 // Typing effect for the text
-var text = "Time to test something new. ";
+var text = "Let's keep it going.";
 var index = 0;
-var cursor = '|'; // Cursor character
+var cursor = '|'; // Initial cursor
 
 function type() {
-    if (index <= text.length) { 
+    if (index <= text.length) {
         document.getElementById("typing-text").innerHTML = text.substring(0, index) + cursor;
         index++;
         setTimeout(type, 100); // Adjust typing speed here (milliseconds)
+    } else {
+        setInterval(toggleCursor, 500); // Start blinking cursor
     }
+}
+
+function toggleCursor() {
+    cursor = (cursor === '|') ? '' : '|'; // Toggle cursor
+    document.getElementById("typing-text").innerHTML = text + cursor;
 }
 
 // Start typing animation with delay when the page loads
@@ -39,3 +46,23 @@ window.onload = function() {
         type();
     }, 500); // Adjust delay here (milliseconds)
 }
+
+// // Typing effect for the text
+// var text = "Time to test something new. ";
+// var index = 0;
+// var cursor = '|'; // Cursor character
+
+// function type() {
+//     if (index <= text.length) { 
+//         document.getElementById("typing-text").innerHTML = text.substring(0, index) + cursor;
+//         index++;
+//         setTimeout(type, 100); // Adjust typing speed here (milliseconds)
+//     }
+// }
+
+// // Start typing animation with delay when the page loads
+// window.onload = function() {
+//     setTimeout(function() {
+//         type();
+//     }, 500); // Adjust delay here (milliseconds)
+// }
