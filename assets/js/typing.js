@@ -110,11 +110,11 @@ function type() {
         setTimeout(type, 100);
     // Once the first text is written, run the replacement function
     } else {
-        replaceText(); 
+        removeText(); 
     }
 }
 
-function replaceText() {
+function removeText() {
     var targetIndex = text.indexOf(replacement); // Get the location of the word to replace
     // Iterate backwards until the replacement index
     if (index >= targetIndex) {
@@ -122,8 +122,14 @@ function replaceText() {
         index--;
         cursorVisible = !cursorVisible;
         setTimeout(type, 100);
+    } else {
+        replaceText();
+    }
+}
+
+function replaceText() {
     // Iterate forward through the new word    
-    } else if (index < targetIndex && index <= endText.length) {
+    if (index <= endText.length) {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
         index++;
         cursorVisible = !cursorVisible;
