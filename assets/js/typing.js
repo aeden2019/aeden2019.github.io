@@ -55,13 +55,17 @@ function type() {
 function replaceText() {
     var currentIndex = text.indexOf("Burger");
     if (currentIndex >= 0) {
-        text = text.substring(0, currentIndex) + text.substring(currentIndex + 1);
-        document.getElementById("typing-text").innerHTML = text;
+        var removedText = text.substring(0, currentIndex) + text.substring(currentIndex + 1);
+        document.getElementById("typing-text").innerHTML = removedText;
+        text = removedText;
         setTimeout(replaceText, 100); // Adjust typing speed here
-    } else {
+    } else if (text === "Hi, my name is ") {
         index = 0; // Reset the index for typing "Andrew"
         text = newText; // Set text to "Hi, my name is Andrew."
         setTimeout(type, 500); // Start typing "Andrew" after a delay
+    } else {
+        text = "Hi, my name is "; // Start removing "Burger" from the end
+        setTimeout(replaceText, 500); // Wait before starting to remove "Burger"
     }
 }
 
@@ -80,3 +84,4 @@ window.onload = function() {
 window.onunload = function() {
     clearInterval(cursorInterval);
 }
+
