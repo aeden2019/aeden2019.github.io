@@ -117,7 +117,7 @@ function type() {
 function removeText() {
     var targetIndex = text.indexOf(replacement); // Get the location of the word to replace
     // Iterate backwards until the replacement index
-    if (index >= targetIndex) {
+    if (index > targetIndex) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
         cursorVisible = !cursorVisible;
