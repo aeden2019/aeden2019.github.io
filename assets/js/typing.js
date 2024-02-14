@@ -53,21 +53,22 @@ function type() {
 }
 
 function replaceText() {
-    var currentIndex = newText.indexOf("Burger");
+    var currentIndex = text.indexOf("Burger");
     if (currentIndex >= 0) {
-        newText = newText.substring(0, currentIndex) + cursorVisible ? '|' : '' + newText.substring(currentIndex);
-        document.getElementById("typing-text").innerHTML = newText;
+        text = text.substring(0, currentIndex) + text.substring(currentIndex + 1);
+        document.getElementById("typing-text").innerHTML = text;
         setTimeout(replaceText, 100); // Adjust typing speed here
-        cursorVisible = !cursorVisible;
     } else {
-        cursorInterval = setInterval(toggleCursor, 500); // Start blinking cursor
+        index = 0; // Reset the index for typing "Andrew"
+        text = newText; // Set text to "Hi, my name is Andrew."
+        setTimeout(type, 500); // Start typing "Andrew" after a delay
     }
 }
 
 function toggleCursor() {
     cursorVisible = !cursorVisible;
     var cursor = cursorVisible ? '|' : '';
-    document.getElementById("typing-text").innerHTML = newText + cursor;
+    document.getElementById("typing-text").innerHTML = text + cursor;
 }
 
 window.onload = function() {
