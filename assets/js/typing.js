@@ -9,7 +9,7 @@ function type() {
         document.getElementById("typing-text").innerHTML = text.substring(0, index) + cursor;
         cursorVisible = !cursorVisible;
         index++;
-        setTimeout(type, 200); // Adjust typing speed here (milliseconds)
+        setTimeout(type, 150); // Adjust typing speed here (milliseconds)
     }
 }
 
@@ -17,5 +17,5 @@ function type() {
 window.onload = function() {
     setTimeout(function() {
         type();
-    }, 2000); // Adjust delay here (milliseconds)
+    }, 1000); // Adjust delay here (milliseconds)
 }
