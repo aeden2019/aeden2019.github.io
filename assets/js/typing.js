@@ -10,7 +10,9 @@ function type() {
     }
 }
 
-// Start typing animation when the page loads
+// Start typing animation with delay when the page loads
 window.onload = function() {
-    type();
+    setTimeout(function() {
+        type();
+    }, 2000); // Adjust delay here (milliseconds)
 }
