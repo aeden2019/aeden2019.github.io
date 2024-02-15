@@ -110,24 +110,24 @@ function type() {
         setTimeout(type, 100);
     // Once the first text is written, run the replacement function
     } else {
-        removeText(); 
+        removeText(cursor); 
     }
 }
 
-function removeText() {
+function removeText(cursor) {
     var targetIndex = startText.indexOf(replacement); // Get the location of the word to replace
     // Iterate backwards until the replacement index
-    if (index > targetIndex) {
+    if (index >= targetIndex) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
         cursorVisible = !cursorVisible;
         setTimeout(type, 100);
     } else {
-        replaceText();
+        replaceText(cursor);
     }
 }
 
-function replaceText() {
+function replaceText(cursor) {
     // Iterate forward through the new word    
     if (index <= endText.length) {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
