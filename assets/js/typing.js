@@ -92,8 +92,6 @@
 
 
 var startText = "Hi, my name is Burger";
-//var oldWord = "Burger";
-//var replacedWord = "Andrew."
 var endText = "Hi, my name is Andrew.";
 var replacement = "Burger"
 var index = 0;
@@ -122,6 +120,7 @@ function removeText(cursor) {
     if (index >= targetIndex) {
         console.log("Current index " + index);
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
+        console.log("Current text: " + startText.substring(0, index))
         index--;
         cursorVisible = !cursorVisible;
         setTimeout(removeText, 100);
