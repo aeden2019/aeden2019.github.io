@@ -124,7 +124,7 @@ function removeText(cursor) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
         cursorVisible = !cursorVisible;
-        setTimeout(type, 100);
+        setTimeout(removeText, 100);
     } else {
         console.log("Move to replaceText with index: " + index);
         replaceText(cursor);
@@ -137,7 +137,7 @@ function replaceText(cursor) {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
         index++;
         cursorVisible = !cursorVisible;
-        setTimeout(type, 100);
+        setTimeout(replaceText, 100);
     // Blinking cursor 
     } else {
         cursorInterval = setInterval(toggleCursor, 500); // Start blinking cursor
