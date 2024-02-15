@@ -97,9 +97,10 @@ var replacement = "Burger"
 var index = 0;
 var cursorVisible = true;
 var cursorInterval;
+var cursor = cursorVisible ? '|' : '';
 
 function type() {
-    var cursor = cursorVisible ? '|' : '';
+    // var cursor = cursorVisible ? '|' : '';
     // Iterate through the full text
     if (index <= startText.length) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
@@ -109,11 +110,13 @@ function type() {
     // Once the first text is written, run the replacement function
     } else {
         console.log("Moving to removeText with index: " + index);
-        removeText(cursor); 
+        //removeText(cursor); 
+        removeText();
     }
 }
 
-function removeText(cursor) {
+// function removeText(cursor) {
+function removeText() {
     var targetIndex = startText.indexOf(replacement); // Get the location of the word to replace
     console.log("Target index of: " + targetIndex);
     // Iterate backwards until the replacement index
@@ -126,11 +129,13 @@ function removeText(cursor) {
         setTimeout(removeText, 100);
     } else {
         console.log("Move to replaceText with index: " + index);
-        replaceText(cursor);
+        //replaceText(cursor);
+        replaceText();
     }
 }
 
-function replaceText(cursor) {
+// function replaceText(cursor) {
+function replaceText() {
     // Iterate forward through the new word    
     if (index <= endText.length) {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
