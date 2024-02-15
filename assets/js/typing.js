@@ -110,19 +110,23 @@ function type() {
         setTimeout(type, 100);
     // Once the first text is written, run the replacement function
     } else {
+        console.log("Moving to removeText with index: " + index);
         removeText(cursor); 
     }
 }
 
 function removeText(cursor) {
     var targetIndex = startText.indexOf(replacement); // Get the location of the word to replace
+    console.log("Target index of: " + targetIndex);
     // Iterate backwards until the replacement index
     if (index >= targetIndex) {
+        console.log("Current index " + index);
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
         cursorVisible = !cursorVisible;
         setTimeout(type, 100);
     } else {
+        console.log("Move to replaceText with index: " + index);
         replaceText(cursor);
     }
 }
