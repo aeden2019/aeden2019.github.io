@@ -19,7 +19,7 @@ function type() {
     if (index <= startText.length) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index++;
-        cursorVisible = !cursorVisible;
+        //cursorVisible = !cursorVisible;
         setTimeout(type, 100);
     // Once the first text is written, run the replacement function
     } else {
@@ -33,10 +33,9 @@ function removeText() {
     if (index >= targetIndex) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
-        cursorVisible = !cursorVisible;
+        //cursorVisible = !cursorVisible;
         setTimeout(removeText, 100);
     } else {
-        console.log("Move to replaceText with index: " + index);
         replaceText();
     }
 }
@@ -46,11 +45,12 @@ function replaceText() {
     if (index <= endText.length) {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
         index++;
-        cursorVisible = !cursorVisible;
+        //cursorVisible = !cursorVisible;
         setTimeout(replaceText, 100);
     // Blinking cursor 
     } else {
         cursorInterval = setInterval(toggleCursor, 500); // Start blinking cursor
+        setTimeout(eraseText, 5000);
     }
 }
 
@@ -58,13 +58,20 @@ function toggleCursor() {
     cursorVisible = !cursorVisible;
     var cursor = cursorVisible ? '|' : '';
     document.getElementById("typing-text").innerHTML = endText + cursor;
+}
 
-    // Restart animation after 5 seconds of blinking cursor
-    setTimeout(function() {
-        clearInterval(cursorInterval);
-        index = 0;
+function eraseText() {
+    clearInterval(cursorInterval);
+    var cursorVisible = true;
+    // Iterate backwards until the start
+    if (index >= 0) {
+        document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
+        index--;
+        setTimeout(eraseText, 100);
+    // Restart the whole process
+    } else {
         type();
-    }, 5000); // Adjust duration here (in milliseconds)
+    }
 }
 
 window.onload = function() {
