@@ -20,6 +20,7 @@ function type() {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index++;
         setTimeout(type, 100);
+        adjustContainerWidth();
     // Once the first text is written, run the replacement function
     } else {
         removeText();
@@ -33,6 +34,7 @@ function removeText() {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
         setTimeout(removeText, 100);
+        adjustContainerWidth();
     } else {
         replaceText();
     }
@@ -44,6 +46,7 @@ function replaceText() {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
         index++;
         setTimeout(replaceText, 100);
+        adjustContainerWidth();
     // Blinking cursor 
     } else {
         cursorInterval = setInterval(toggleCursor, 500); // Start blinking cursor
@@ -65,10 +68,18 @@ function eraseText() {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
         index--;
         setTimeout(eraseText, 100);
+        adjustContainerWidth();
     // Restart the whole process
     } else {
         type();
     }
+}
+
+// Function to dynamically adjust container width based on text width
+function adjustContainerWidth() {
+    var typingText = document.getElementById("typing-text");
+    var container = document.getElementById("typing-container");
+    container.style.width = typingText.offsetWidth + "px";
 }
 
 window.onload = function() {
