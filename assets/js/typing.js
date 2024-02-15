@@ -58,6 +58,13 @@ function toggleCursor() {
     cursorVisible = !cursorVisible;
     var cursor = cursorVisible ? '|' : '';
     document.getElementById("typing-text").innerHTML = endText + cursor;
+
+    // Restart animation after 5 seconds of blinking cursor
+    setTimeout(function() {
+        clearInterval(cursorInterval);
+        index = 0;
+        type();
+    }, 5000); // Adjust duration here (in milliseconds)
 }
 
 window.onload = function() {
