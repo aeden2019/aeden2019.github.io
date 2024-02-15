@@ -19,7 +19,6 @@ function type() {
     if (index <= startText.length) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index++;
-        //cursorVisible = !cursorVisible;
         setTimeout(type, 100);
     // Once the first text is written, run the replacement function
     } else {
@@ -33,7 +32,6 @@ function removeText() {
     if (index >= targetIndex) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
         index--;
-        //cursorVisible = !cursorVisible;
         setTimeout(removeText, 100);
     } else {
         replaceText();
@@ -45,7 +43,6 @@ function replaceText() {
     if (index <= endText.length) {
         document.getElementById("typing-text").innerHTML = endText.substring(0, index) + cursor;
         index++;
-        //cursorVisible = !cursorVisible;
         setTimeout(replaceText, 100);
     // Blinking cursor 
     } else {
