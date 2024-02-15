@@ -1,3 +1,11 @@
+/*
+    Custom script to animate the greeting text with a typewritter style.
+    
+    Author: Andrew Eden (github.com/aeden2019)
+    
+*/
+
+
 var startText = "Hi, my name is Burger";
 var endText = "Hi, my name is Andrew.";
 var replacement = "Burger"
