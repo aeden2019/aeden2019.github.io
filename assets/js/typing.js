@@ -115,7 +115,7 @@ function type() {
 }
 
 function removeText() {
-    var targetIndex = text.indexOf(replacement); // Get the location of the word to replace
+    var targetIndex = startText.indexOf(replacement); // Get the location of the word to replace
     // Iterate backwards until the replacement index
     if (index > targetIndex) {
         document.getElementById("typing-text").innerHTML = startText.substring(0, index) + cursor;
@@ -143,7 +143,7 @@ function replaceText() {
 function toggleCursor() {
     cursorVisible = !cursorVisible;
     var cursor = cursorVisible ? '|' : '';
-    document.getElementById("typing-text").innerHTML = text + cursor;
+    document.getElementById("typing-text").innerHTML = endText + cursor;
 }
 
 window.onload = function() {
